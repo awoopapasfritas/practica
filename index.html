@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mi página de usuarios</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #f2f2f2;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: navy;
+        }
+
+        .formulario {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 2px 2px 5px gray;
+        }
+
+        input[type="text"], input[type="email"] {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+        .tabla-usuarios {
+            background-color: white;
+            border-collapse: collapse;
+            width: 100%;
+            box-shadow: 2px 2px 5px gray;
+        }
+
+        .tabla-usuarios th, .tabla-usuarios td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        .acciones button {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+
+        .btn-edit {
+            background-color: orange;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: red;
+            color: white;
+        }
+
+        /* todavía no hice responsive */
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Usuarios</h1>
+
+    <!-- Formulario para agregar un usuario -->
+    <div class="formulario">
+        <label>Nombre:</label>
+        <input type="text" placeholder="Escribe tu nombre">
+
+        <label>Email:</label>
+        <input type="email" placeholder="Escribe tu correo">
+
+        <button>Registrar</button>
+    </div>
+
+    <!-- Tabla con usuarios cargados a mano -->
+    <table class="tabla-usuarios">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>juan@example.com</td>
+                <td class="acciones">
+                    <button class="btn-edit">Editar</button>
+                    <button class="btn-delete">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Laura Gómez</td>
+                <td>laura@example.com</td>
+                <td class="acciones">
+                    <button class="btn-edit">Editar</button>
+                    <button class="btn-delete">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
