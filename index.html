@@ -1,113 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi página de usuarios</title>
-    <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: sans-serif;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: navy;
-        }
-
-        .formulario {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-            box-shadow: 2px 2px 5px gray;
-        }
-
-        input[type="text"], input[type="email"] {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            border: 1px solid gray;
-        }
-
-        button {
-            padding: 10px 15px;
-            background-color: green;
-            color: white;
-            border: none;
-        }
-
-        .tabla-usuarios {
-            background-color: white;
-            border-collapse: collapse;
-            width: 100%;
-            box-shadow: 2px 2px 5px gray;
-        }
-
-        .tabla-usuarios th, .tabla-usuarios td {
-            padding: 12px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-
-        .acciones button {
-            margin-right: 10px;
-            padding: 5px 10px;
-        }
-
-        .btn-edit {
-            background-color: orange;
-            color: white;
-        }
-
-        .btn-delete {
-            background-color: red;
-            color: white;
-        }
-
-    </style>
+    <title>Gestión de Usuarios</title>
 </head>
 <body>
+    <h1>Alta de Usuario</h1>
+    <form action="/agregar" method="POST">
+        Nombre: <input type="text" name="nombre" required><br>
+        Email: <input type="email" name="email" required><br>
+        <button type="submit">Agregar</button>
+    </form>
 
-    <h1>Gestión de Usuarios</h1>
-    <div class="formulario">
-        <label>Nombre:</label>
-        <input type="text" placeholder="Escribe tu nombre">
-
-        <label>Email:</label>
-        <input type="email" placeholder="Escribe tu correo">
-
-        <button>Registrar</button>
-    </div>
-    <table class="tabla-usuarios">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Juan Pérez</td>
-                <td>juan@example.com</td>
-                <td class="acciones">
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Eliminar</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Laura Gómez</td>
-                <td>laura@example.com</td>
-                <td class="acciones">
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Eliminar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+    <h2>Usuarios Registrados</h2>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>
+            {{ usuario['nombre'] }} - {{ usuario['email'] }}
+            <form action="/eliminar/{{ loop.index0 }}" method="POST" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+            <form action="/modificar/{{ loop.index0 }}" method="GET" style="display:inline;">
+                <button type="submit">Modificar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
